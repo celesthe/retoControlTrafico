@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: api-products
+spec:
+  hosts:
+    - api-products
+  http:
+    - route:
+        - destination:
+            host: api-products
+            subset: v1
+          weight: 80
+        - destination:
+            host: api-products
+            subset: v2
+          weight: 20
